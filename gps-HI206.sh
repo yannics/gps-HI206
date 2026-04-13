@@ -132,13 +132,11 @@ mainfunc() {
 	 speedkn=$(echo "scale=3; $speedms * 1.94384" | bc | awk '{printf "%f", $0}')
      fi
 
-     #echo ""
-     #echo lat:$lat2 long:$lon2
-     #echo $speedkn kn 
+     printf "\r$speedkn kn - lat:$lat2 long:$lon2"
 
-     res="osascript -e 'display notification \"lat: $lat2\nlong: $lon2\nspeed: $speedkn kn\" with title \"gps-HI206\"'"
-
-     eval "$res"
+     # as notification macOS (comment previous line and uncomment the two next ones)
+     #res="osascript -e 'display notification \"lat: $lat2\nlong: $lon2\nspeed: $speedkn kn\" with title \"gps-HI206\"'"
+     #eval "$res"
      
      lat1=$lat2
      lon1=$lon2
