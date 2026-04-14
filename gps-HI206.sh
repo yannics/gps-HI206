@@ -116,7 +116,7 @@ mainfunc() {
 	Coordinate c2("$lat2","$lon2");
 	std::cout << HaversineDistance(c1, c2) * 1000.0 << std::endl;
 	return 0;
-     }" > $DIR/.tmp.cpp
+    }" > $DIR/.tmp.cpp
     
      g++ -o $DIR/.haversine $DIR/.tmp.cpp
      dist=`$DIR/.haversine`
@@ -131,6 +131,9 @@ mainfunc() {
 	 speedms=$(echo "scale=3; $dist / $dur" | bc)
 	 speedkn=$(echo "scale=3; $speedms * 1.94384" | bc | awk '{printf "%f", $0}')
      fi
+
+     # uncomment next line to save data in file
+     # echo "$speedkn $lat2 $lon2" >> $HOME/Desktop/gps-saved-output.txt
 
      printf "\r$speedkn kn - lat:$lat2 long:$lon2"
 
